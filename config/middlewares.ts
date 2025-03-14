@@ -14,7 +14,7 @@ module.exports = [
   {
     name: 'strapi::cors',
     config: {
-      origin: ['http://localhost:1337', 'https://your-render-app-url.com'], // Substitua pela URL da sua aplicação no Render
+      origin: ['http://localhost:1337', 'https://cms-strapi-backend-puxh.onrender.com'], // Substitua pela URL da sua aplicação no Render
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
       allowedHeaders: ['Content-Type', 'Authorization'],
     },
