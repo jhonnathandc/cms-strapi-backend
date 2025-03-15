@@ -14,11 +14,7 @@ module.exports = [
   {
     name: 'strapi::cors',
     config: {
-      origin: [
-        'http://127.0.0.1:5500', // Frontend local
-        'http://localhost:1337', // Painel admin local
-        'https://cms-strapi-backend-puxh.onrender.com', // Backend no Render
-      ],
+      origin: ['*'],
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
       headers: ['Content-Type', 'Authorization'],
       keepHeadersOnError: true,
