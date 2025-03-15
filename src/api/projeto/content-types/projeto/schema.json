@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projetos",
+  "info": {
+    "singularName": "projeto",
+    "pluralName": "projetos",
+    "displayName": "Projeto"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Nome": {
+      "type": "string",
+      "required": true
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Nome",
+      "required": true
+    },
+    "Cidade": {
+      "type": "string",
+      "required": true
+    },
+    "Andamento": {
+      "type": "enumeration",
+      "enum": [
+        "Concluído",
+        "Em Andamento"
+      ],
+      "required": true,
+      "default": "Concluído"
+    },
+    "Inicio": {
+      "type": "date"
+    },
+    "Fim": {
+      "type": "date"
+    },
+    "Link": {
+      "type": "string",
+      "required": true
+    },
+    "Area": {
+      "type": "biginteger"
+    },
+    "Capa": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "Fotos": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    }
+  }
+}

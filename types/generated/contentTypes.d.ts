@@ -369,6 +369,49 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiProjetoProjeto extends Struct.CollectionTypeSchema {
+  collectionName: 'projetos';
+  info: {
+    displayName: 'Projeto';
+    pluralName: 'projetos';
+    singularName: 'projeto';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Andamento: Schema.Attribute.Enumeration<
+      ['Conclu\u00EDdo', 'Em Andamento']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Conclu\u00EDdo'>;
+    Area: Schema.Attribute.BigInteger;
+    Capa: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
+    Cidade: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Fim: Schema.Attribute.Date;
+    Fotos: Schema.Attribute.Media<'images' | 'files', true> &
+      Schema.Attribute.Required;
+    Inicio: Schema.Attribute.Date;
+    Link: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::projeto.projeto'
+    > &
+      Schema.Attribute.Private;
+    Nome: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    Slug: Schema.Attribute.UID<'Nome'> & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -878,6 +921,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::projeto.projeto': ApiProjetoProjeto;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
