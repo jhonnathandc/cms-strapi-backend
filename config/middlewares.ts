@@ -14,7 +14,12 @@ module.exports = [
   {
     name: 'strapi::cors',
     config: {
-      origin: ['http://localhost:1337', 'https://cms-strapi-backend-puxh.onrender.com'], // Substitua pela URL da sua aplicação no Render
+      enabled: true, // Certifique-se de que o CORS está habilitado
+      allowedOrigins: [
+        'https://formatod.com.br',
+        'http://127.0.0.1:5500', // Frontend local
+        'https://cms-strapi-backend-puxh.onrender.com', // Frontend no Render
+      ],
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
       allowedHeaders: ['Content-Type', 'Authorization'],
     },
