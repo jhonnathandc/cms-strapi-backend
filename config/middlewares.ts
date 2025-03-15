@@ -14,14 +14,14 @@ module.exports = [
   {
     name: 'strapi::cors',
     config: {
-      enabled: true, // Certifique-se de que o CORS está habilitado
-      allowedOrigins: [
-        'https://formatod.com.br',
+      origin: [
         'http://127.0.0.1:5500', // Frontend local
-        'https://cms-strapi-backend-puxh.onrender.com', // Frontend no Render
+        'http://localhost:1337', // Painel admin local
+        'https://cms-strapi-backend-puxh.onrender.com', // Backend no Render
       ],
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-      allowedHeaders: ['Content-Type', 'Authorization'],
+      headers: ['Content-Type', 'Authorization'],
+      keepHeadersOnError: true,
     },
   },
   'strapi::poweredBy',
